@@ -1,0 +1,22 @@
+﻿<div class="mine-container" @oncontextmenu:preventDefault="true">
+    @if (DisplayGame)
+    {
+        <div class="play-field" style="grid-template-columns: repeat(@Game.Width, @TileSizeString); grid-template-rows: repeat(@Game.Height, @TileSizeString);">
+                @for(int i = 0; i < Game.GameTiles.Count; i++)
+                {
+                    <Tile 
+                        OnTileLeftClick="SquareLeftClicked" 
+                        OnTileRightClick="SquareRightClicked" 
+                        GameTile="Game.GameTiles[i]"
+                        Disabled="GameOver"
+                        TileSize="@TileSizeString"></Tile>
+                }
+
+        </div>
+    }
+</div>
+
+@if (GameOver && !IgnoreDefaultGameOver)
+{
+    <GameOver OnRestartGame="StartGame" Content="@GameOverMessage"></GameOver>
+}

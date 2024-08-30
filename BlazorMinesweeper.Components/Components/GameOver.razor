@@ -1,0 +1,15 @@
+﻿<div class="game-over-container">
+    <div class="game-over-message">@Content</div>
+    <button class="restart-button" @onclick="HandleRestartClick">Restart</button>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback OnRestartGame { get; set; }
+    [Parameter]
+    public string Content { get; set; } = null!;
+    private async Task HandleRestartClick(MouseEventArgs e)
+    {
+        await OnRestartGame.InvokeAsync();
+    }
+}

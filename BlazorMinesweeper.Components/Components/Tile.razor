@@ -1,0 +1,7 @@
+﻿
+<div class="tile-square @PlaySquareCss @Icon" style="width: @TileSize; height: @TileSize;" @onclick="HandleLeftClick" @oncontextmenu="HandleRightClick" @oncontextmenu:preventDefault="true">
+    @if (GameTile.Revealed && GameTile.Value != -1)
+    {
+        @GameTile.Value
+    }
+</div>

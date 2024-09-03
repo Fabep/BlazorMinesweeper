@@ -1,4 +1,4 @@
-# RazorMinesweeper
+# BlazorMinesweeper
 
 The perfect component to add to ANY business application.
 (It's just minesweeper.)

@@ -4,12 +4,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	<PackageId>BlazorMinesweeper</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageOutputPath>./nuget</PackageOutputPath>
-    <Version>1.2.4</Version>
+    <Version>1.0.0</Version>
     <Authors>Fabep</Authors>
     <Description>A minesweeper component for Blazor applications</Description>
-    <RepositoryUrl>https://github.com/Fabep/RazorMinesweeper</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Fabep/BlazorMinesweeper</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -56,7 +56,7 @@ public partial class Minesweeper : ComponentBase
     public int MineCount { get; set; } = 99;
 
     [Parameter]
-    public bool IgnoreDefaultGameOver { get; set; } = false;
+    public bool IgnoreDefaultGameOver { get; set; }
 
     [Parameter]
     public int TileSize { get; set; } = 20;

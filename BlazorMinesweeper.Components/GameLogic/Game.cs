@@ -32,11 +32,6 @@ public class Game
 
     public void GenerateGame(int height = 16, int width = 30, int mineCount = 99)
     {
-        if (height * width <= mineCount)
-            throw new ArgumentException("The amount of mines can't be larger or equal to tiles.");
-        if (mineCount <= 0)
-            throw new ArgumentException("Game must contain mines.");
-
         _height = height;
         _width = width;
         _mineCount = mineCount;

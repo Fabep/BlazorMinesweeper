@@ -55,9 +55,15 @@ public partial class Minesweeper : ComponentBase
     [Parameter]
     public int MineCount { get; set; } = 99;
 
+    /// <summary>
+    /// Ignores the default game over popup.
+    /// </summary>
     [Parameter]
     public bool IgnoreDefaultGameOver { get; set; }
 
+    /// <summary>
+    /// Size of the tiles in px.
+    /// </summary>
     [Parameter]
     public int TileSize { get; set; } = 20;
 
@@ -72,23 +78,13 @@ public partial class Minesweeper : ComponentBase
 
     private readonly Game Game = new();
 
-    protected override void OnParametersSet()
-    {
-        if (Width * Height / 2 <= MineCount)
-            throw new ArgumentException("Mine count can't exceed half of the amount of tiles!");
-        if (Width * Height < 50)
-            throw new ArgumentException("The amount of tiles you have specified is to small. Consider increasing the width and/or height of the component.");
-        if (MineCount <= 0)
-            throw new ArgumentException("The amount of mines must be larger than 0!");
-        base.OnParametersSet();
-    }
-
     /// <summary>
     /// Method for starting / generating a new game.
+    /// Throws exceptions when the Height, Width or MineCount parameters are incorrect.
     /// </summary>
-    /// <returns></returns>
     public async Task StartGame()
     {
+        VerifyParameters();
         await OnStart.InvokeAsync().ConfigureAwait(true);
         Game.GenerateGame(Height, Width, MineCount);
         DisplayGame = true;
@@ -125,5 +121,16 @@ public partial class Minesweeper : ComponentBase
         GameOver = true;
         Game.RevealMines();
         await OnGameEnd.InvokeAsync(false).ConfigureAwait(true);
+    }
+
+    private void VerifyParameters()
+    {
+        if (Width * Height / 2 <= MineCount)
+            throw new ArgumentException("Mine count can't exceed half of the amount of tiles!");
+        if (Width * Height < 50)
+            throw new ArgumentException("The amount of tiles you have specified is to small. Consider increasing the width and/or height of the component.");
+        if (MineCount <= 0)
+            throw new ArgumentException("The amount of mines must be larger than 0!");
+        base.OnParametersSet();
     }
 }
